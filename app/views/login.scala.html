@@ -1,0 +1,54 @@
+@(loginForm: Form[Account])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) }
+
+@main {
+
+    <h1>Login</h1>
+
+    @if(flash.containsKey("success")) {
+        <div class="alert-message warning">
+            <strong>Done!</strong> @flash.get("success")
+        </div>
+    }
+    @if(flash.containsKey("error")) {
+        <div class="alert-message warning">
+            <strong>Error!</strong> @flash.get("error")
+        </div>
+    }
+
+    @form(routes.Application.authenticate()) {
+
+        <fieldset>
+
+            @inputText(loginForm("username"), '_label -> "Username", '_help -> "")
+            @inputPassword(loginForm("password"), '_label -> "Password", '_help -> "")
+
+        </fieldset>
+
+        <div class="actions">
+            <input type="submit" value="Login" class="btn">
+            <a href="@routes.Application.signup()" class="btn">SignUp</a>
+        </div>
+    }
+    <button onclick="myFunction()" class="btn primary">Login with Gitlab</button>
+    <script>
+        function myFunction() {
+            hello.init({
+                gitlab: 'f0f335153225b70755083855c49702adc061aa503892844bc88d80e1f8f6e783',
+            });
+
+            hello('gitlab').login().then(function(json) {
+                alert('Your name is ' + json.name);
+            }, function(e) {
+                alert('Whoops! ' + e.error.message);
+            });
+        }
+
+    </script>
+
+
+
+}

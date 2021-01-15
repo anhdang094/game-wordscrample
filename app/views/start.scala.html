@@ -1,0 +1,161 @@
+@(word: Word)
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) }
+
+
+    <html>
+
+    <head>
+        <script rel="stylesheet" src="@routes.Assets.at("stylesheets/bower_components/jquery/dist/jquery.min.js")"></script>
+
+        <style>
+
+        html {
+            min-width: 100%;
+            min-height: 100%;
+                 background-image: url(@routes.Assets.at("stylesheets/image/images.jpg"));
+
+                 background-repeat: no-repeat;
+                 background-position: center;
+                 background-size:cover
+
+        }
+
+        body {
+            width: 800px;
+            height: 500px;
+            background-color: rgba(255,255,0,0.7);
+
+            margin: 0 auto;
+            text-align: center;
+
+
+
+
+        }
+
+
+            #input{
+
+              position: relative;
+              z-index: 9999;
+              width: 150px;
+              height: 50px;
+              margin: 15px;
+              background-color: #d58512;
+              line-height: 50px;
+              color: white;
+              text-transform: uppercase;
+              font-weight: bold;
+                        }
+
+            .classname{
+            position: relative;
+              z-index: 9999;
+              width: 50px;
+              height: 50px;
+              margin: 15px;
+              background-color: #07a787;
+              line-height: 50px;
+              color: white;
+              text-transform: uppercase;
+              font-weight: bold;
+             -moz-border-radius: 100px;
+                -webkit-border-radius: 100px;
+                border-radius: 100px;
+            display: inline-block;
+            }
+            .choose {
+            display: block;
+            margin: 0 auto;
+            text-align: center;
+            }
+            .board { text-align: center; }
+            .choose li,
+            .board li{
+            display: inline-block;
+            position: relative;
+            z-index: 9999;
+            width: 50px;
+            height: 50px;
+            margin: 15px;
+            background-color: #761c19;
+            line-height: 50px;
+            color: white;
+            text-transform: uppercase;
+            font-weight: bold;
+            }
+
+
+        </style>
+    </head>
+
+    <body class="yes">
+
+            <p id="input">input</p>
+
+
+            <script>
+                var x = new String("@word.name".toUpperCase());
+                var text ="";
+                var len = x.length;
+
+                for(var i=0;i<len;i++){
+                    text += x.charAt(Math.floor(Math.random() * x.length));
+                    x= x.substring(0,x.indexOf(text[i])) + x.substring(x.indexOf(text[i]) + 1)
+                    var btn = document.createElement("div");
+                    btn.className = "classname";
+                    var t = document.createTextNode(text[i]);
+                    btn.appendChild(t);
+                    document.body.appendChild(btn);
+                }
+
+            </script>
+
+        <p id="input">your input</p>
+
+        <div class="board"></div>
+
+        <div class="choose">
+            <ul id="list">
+
+
+            </ul>
+
+        </div>
+        <script>
+    $(document).ready(function() {
+
+        var y = new String("@word.name".toUpperCase());
+        var len = y.length;
+
+        for(var j=0;j<len;j++) {
+            var new_task = text[j];
+            $('#list').append('<li>' + new_task + '</li>');
+
+        }
+    });
+    </script>
+
+        <script>
+             $(function(){
+                 $(document).ready(function(){
+                     var text_lis = $('.choose li').text();
+                     // var regex = /^[\s]+$/;
+                     $('body').keyup(function(){
+                         $('.choose li:first-child').appendTo('.board');
+                     });
+                 });
+             });
+
+        </script>
+
+
+
+
+    </body>
+    </html>
+
+

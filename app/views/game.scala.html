@@ -1,0 +1,60 @@
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) }
+
+@main {
+
+    <head>
+    <style>
+
+    body {
+                background-image: url(@routes.Assets.at("stylesheets/image/image12.jpg"));
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size:cover
+         }
+
+    html {
+                text-align: center;
+        }
+    .menu {
+                background-color: rgba(255,255,0,0.5);
+                width: 400px;
+                margin: auto auto;
+                top: 20%;
+                bottom: 20%;
+                background-position: center;
+        }
+
+
+    </style>
+    </head>
+
+    <body>
+
+    <div class="menu">
+        <h1>Game </h1>
+
+        <br>
+        <br>
+
+        <a href="@routes.Application.start()" class="btn primary">Start</a>
+        <br>
+        <br>
+        <br>
+
+
+        <a href="@routes.Application.score()" class="btn primary">Score</a>
+
+        <br>
+        <br>
+        <br>
+
+        <a href="@routes.Application.moregame()" class="btn primary">MoreGame</a>
+        <br>
+        <br>
+        </div>
+
+    </body>
+
+}

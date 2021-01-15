@@ -1,0 +1,23 @@
+@(user: Account)
+
+@main {
+
+    <h1>Account Information</h1>
+
+
+    <div class="actions">
+
+        <p>Username: @user.username</p>
+        <p>Age: @user.age</p>
+        <p>Company: @user.company</p>
+        <p>Address: @user.address</p>
+
+    <br>
+
+        <a href="@routes.Application.list()" class="btn primary">Back</a>
+
+    </div>
+
+
+
+}

@@ -1,0 +1,32 @@
+@(accountForm: Form[Account])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) }
+
+@main {
+
+    <h1>Register Account</h1>
+
+    @form(routes.Application.register()) {
+
+        <fieldset>
+
+            @inputText(accountForm("username"), '_label -> "Username:", '_help -> "")
+            @inputPassword(accountForm("password"), '_label -> "Password:", '_help -> "")
+            @inputPassword(accountForm("confirmPassword"), '_label -> "Confirm password:", '_help -> "")
+            @inputText(accountForm("company"), '_label -> "Company:", '_help -> "")
+            @inputText(accountForm("age"), '_label -> "Age:", '_help -> "")
+            @inputText(accountForm("address"), '_label -> "Address:", '_help -> "")
+
+        </fieldset>
+
+
+        <div class="actions">
+            <a href="@routes.Application.login()" class="btn primary">Cancel</a>
+            <input type="submit" value="Submit" class="btn primary">
+        </div>
+
+    }
+
+}

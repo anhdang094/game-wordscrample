@@ -1,0 +1,42 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Default path will just redirect to the computer list
+GET     /                           controllers.Application.index()
+
+# Computers list (look at the default values for pagination parameters)
+GET     /computers                  controllers.Application.list(p:Int ?= 0, s ?= "name", o ?= "asc", f ?= "")
+
+# Add computer
+GET     /computers/new              controllers.Application.create()
+POST    /computers                  controllers.Application.save()
+
+# Edit existing computer
+GET     /computers/:id              controllers.Application.edit(id:Long)
+POST    /computers/:id              controllers.Application.update(id:Long)
+
+# Delete a computer
+POST    /computers/:id/delete       controllers.Application.delete(id:Long)
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
+GET     /logout                           controllers.Application.logout()
+
+
+GET     /login                           controllers.Application.login()
+POST     /login                           controllers.Application.authenticate()
+
+GET     /signup                           controllers.Application.signup()
+POST     /signup                           controllers.Application.register()
+
+
+GET     /infor                           controllers.Application.infor()
+
+
+GET     /start                          controllers.Application.start()
+GET     /score                          controllers.Application.score()
+GET     /moregame                       controllers.Application.moregame()
+
+
